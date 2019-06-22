@@ -56,3 +56,34 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
 
 每个服务的每个模块的顶级包名需要遵循以下格式:
 顶层包名格式为: com.chinasofti.futurelab.{serviceName}.{moduleName}
+
+## .ignore
+
+在根目录添加.ignore文件.内容如下
+```java
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea
+```
