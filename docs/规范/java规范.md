@@ -61,29 +61,32 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
 
 在根目录添加.ignore文件.内容如下
 ```java
-# Compiled class file
-*.class
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.pdb
 
-# Log file
-*.log
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
+### IntelliJ IDEA ###
 .idea
+.mvn
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+/logs
 ```
