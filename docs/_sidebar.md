@@ -4,8 +4,9 @@
     * [2、 发布(Release)日志](future-base/release_log.md)
     * [3、 架构](future-base/整体架构.md)
     * 如何接入
-        * [1、 中台服务](future-base/getting_started/中台.md)
-        * [2、 聚合服务](future-base/getting_started/聚合.md)
+        * [1、 maven设置](future-base/getting_started/maven.md)
+        * [2、 中台服务](future-base/getting_started/中台.md)
+        * [3、 聚合服务](future-base/getting_started/聚合.md)
     * 通用工具类
         * [1、restTemplate封装](future-base/utils/RestUriBuilder.md)
 * 二、规范
