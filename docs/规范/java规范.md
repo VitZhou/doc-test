@@ -90,3 +90,44 @@ nbdist/
 
 /logs
 ```
+
+## 日志打印
+
+日志打印必须是能帮助你定位问题的,必须将有意义的参数信息打印出来,如果是捕获了异常信息,则必须打印堆栈信息.
+
+1. 一般日志打印
+
+    ```java
+     log.info("数据同步执行完毕, 更新:{}, 新增:{}, 新增开关:{}", updateCount, addCount, alarmStatusCount);
+    ```
+    日志尽量使用占位符`{}`,使用了它,sl4j会调用对应位置的参数的toString方法(所以如果没有toString方法的参数就不建议再使用占位符了)。
+
+2. 堆栈日志打印:
+    
+    反面例子:
+    
+    ```java
+    catch (KeyManagementException e) {
+        logger.error("-------KeyManagemen{}", e.getMessage());
+    } catch (KeyStoreException e) {
+        logger.error("-------KeyStoreException{}", e.getMessage());
+    } catch (IOException e) {
+        logger.error("-------IOException{}", e.getMessage());
+    }
+    ```
+    这种日志对于生产对位没有任何帮助.
+    
+    应该调整为如下:
+    
+    ```java
+    catch (KeyManagementException e) {
+        logger.error("key管理出现未知异常,appKey="+appKey+",appSecret="+appSecret, e);
+    } catch (KeyStoreException e) {
+        logger.error("key存储失败,appKey="+appKey+",appSecret="+appSecret, e);
+    } catch (IOException e) {
+        logger.error("调用短信平台失败,appKey="+appKey+",appSecret="+appSecret, e);
+    }
+    ```
+    > 注意要打印堆栈信息的话就无法使用占位符`{}`. 如果少量参数的话可以使用字符串拼接,如果参数较多则使用StringBuilder来拼接字符串
+    
+    
