@@ -22,6 +22,7 @@
     * [3、 Hystrix配置](config/Hystrix.md)
     * [4、 Undertow配置](config/Undertow.md)
     * [5、 Ribbon配置](config/Ribbon.md)
+    * [6、 Zipkin配置](config/zipkin.md)
 * 四、单元测试
     * [1、 配置](unit-test/配置.md)
 * 五、鉴权
