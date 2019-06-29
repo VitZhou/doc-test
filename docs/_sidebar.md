@@ -30,9 +30,10 @@
     * [2、接入](auth/接入.md)
 * 六、zookeeper
     * [1、 介绍](zookeeper/调度.md)
-* 七、Q & A
+* 七、Q & A 及关键信息说明
     * [1、 java相关问题](q_a/java.md)
     * [2、 feign相关问题](q_a/feign.md)
     * [3、 gateway相关问题](q_a/gateway.md)
     * [4、 hystrix相关问题](q_a/hystrix.md)
     * [5、 consul相关问题](q_a/consul.md)
+    * [6、 Actuator相关问题](q_a/actuator.md)
