@@ -59,3 +59,10 @@ public class ServerApplication {
 </configuration>
 ```
 
+## 关于一些默认参数说明
+
+mybatis-plus的有许多参数,建议使用之前先查看其[文档](https://baomidou.gitee.io/mybatis-plus-doc/#/quick-start)
+
+plus可以控制id的生成策略,详情看[这里](https://baomidou.gitee.io/mybatis-plus-doc/#/logic-delete?id=spring-boot-mp-starter%e9%85%8d%e7%bd%ae%e5%8f%82%e8%80%83)
+我们默认使用的自增(历史原因),但是新功能严禁使用自增.所以需要再各自的服务里面设置不同的id生成策略
+
