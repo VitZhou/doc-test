@@ -7,6 +7,7 @@
         * [1、 maven设置](future-base/getting_started/maven.md)
         * [2、 中台服务](future-base/getting_started/中台.md)
         * [3、 聚合服务](future-base/getting_started/聚合.md)
+        * [4、 Data source](future-base/getting_started/data-source.md)
     * 通用工具类
         * [1、restTemplate封装](future-base/utils/RestUriBuilder.md)
 * 二、规范
