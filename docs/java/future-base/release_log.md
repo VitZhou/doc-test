@@ -6,7 +6,7 @@
 
 ## 日志
 
-- 2019-06-08
+- 2.0-SNAPSHOT(2019-06-08)
   1. 服务发现
   2. 配置中心
   3. prometheus的jmx和服务监控
@@ -25,3 +25,19 @@
      5. 基础配置(具体请看配置相关文档)
   7. zookeeper
      1. 基于zk的分布式调度(具体请查看分布式调度文档)
+     
+- 3.0-SNAPSHOT(2019-07-03)
+  
+  1. 去除mybatis-plus(有性能问题且无法解决,限制较多未来无法自由扩展),退回mybatis
+  1. 集成sharding-jdbc,支持读写分离(分表分库)
+  1. 集成PageHelper
+  1. 提供分布式id(IdGenerator)
+  1. 集成druid spring boot starter
+  1. PageResponseHelper与PageResponseObject名字互换
+  1. 升级spring boot至2.1.6.RELEASE
+  1. 升级spring cloud至Greenwich.SR2
+  1. data-source更名为mysql
+  1. web-mvc依赖不再默认依赖data-source.使用mysql,需要单独指定依赖`<artifactId>mysql</artifactId>`
+  
+  TODO: 集成Mongodb
+  

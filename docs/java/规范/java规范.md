@@ -129,5 +129,38 @@ nbdist/
     }
     ```
     > 注意要打印堆栈信息的话就无法使用占位符`{}`. 如果少量参数的话可以使用字符串拼接,如果参数较多则使用StringBuilder来拼接字符串
+
+3. 如果输出的对象没有覆盖toString方法
+
+    如果输出的对象没有重写toString方法的话,除了error级别的日志,都需要先判断日志级别是否已打开.从而提高性能
     
+    ```java
+    if (logger.isInfoEnabled()){
+       logger.info("aaaa,param:{}",param);
+    }
+    ```
+#### 敏感信息.
+
+1. 日志中原则上不允许输出敏感信息(如手机号,身份证号),如果要输出需要加密.
+2. 敏感信息不能因为后台报错而将其通过异常传递到前端.
+    
+   反例:
+    ```java
+    try {
+        return localeProvincesDao.selectPage(page, queryWrapper);
+    } catch (Exception e) {
+        logger.error("分页查询失败,entity=" + queryWrapper.getEntity(), e);
+        throw new DbOperationException("分页查询失败,省份id="+id);
+    }
+    ```
+    你可以只抛出异常,异常中不携带任何信息,而通过日志记录当时发生的问题,如:
+    ```java
+    try {
+        return localeProvincesDao.selectPage(page, queryWrapper);
+    } catch (Exception e) {
+        logger.error("查询省份信息失败,id=" + id+",xxx="+xxx, e);
+        throw new DbOperationException();
+    }
+    ```
+#### 
     
