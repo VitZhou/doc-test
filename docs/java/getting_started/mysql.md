@@ -71,15 +71,15 @@ spring:
     datasource:
       names: master,slave
       master:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8 #mysql连接信息
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8
         username: root
         password: root
       slave:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:33066/future_demo?useSSL=false&characterEncoding=utf8
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8
         username: root
         password: root
     masterslave:
@@ -91,5 +91,5 @@ spring:
         show: true #是否显示sql.建议只在dev,sit环境使用
 ```
 
-> 更多sharding-jdbc的知识请查看其[官网](https://shardingsphere.apache.org)
+> 更多sharding-jdbc的知识请查看其[官网](https://shardingsphere.apache.org),jdbcUrl是Hikari的参数.并不是sharding-jdbc参数
 
