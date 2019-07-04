@@ -169,16 +169,14 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
    <?xml version="1.0" encoding="UTF-8"?>
    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   
    	<modelVersion>4.0.0</modelVersion>
    	<artifactId>base-order-service</artifactId>
-   
+       
    	<parent>
    		<groupId>com.chinasofti.futurelab.order</groupId>
    		<artifactId>base-order</artifactId>
    		<version>1.0-SNAPSHOT</version>
    	</parent>
-   
    
    	<dependencies>
    		<dependency>
@@ -201,15 +199,12 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
                <artifactId>json</artifactId>
    			<version>20180813</version>
            </dependency>
-   
    		<dependency>
    			<groupId>com.alipay.sdk</groupId>
    			<artifactId>alipay-sdk-java</artifactId>
    			<version>3.7.26.ALL</version>
    		</dependency>
        </dependencies>
-   
-   
    	<build>
    		<plugins>
    			<plugin>
