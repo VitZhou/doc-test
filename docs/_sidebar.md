@@ -1,6 +1,9 @@
-* 前端vue
+* 公共
+    * [1、Git Commit规范](common/git-commit规范.md)
+    * [2、代码质量竞赛](common/code-review.md)
+* 前端
     * [1、index](vue/index.md)
-* 后端java
+* 后端
     * 一、Future base介绍
         * [1、 简介(Introduction)](java/future-base/简介.md)
         * [2、 发布(Release)日志](java/future-base/release_log.md)
@@ -44,6 +47,3 @@
         * [4、 hystrix相关问题](java/q_a/hystrix.md)
         * [5、 consul相关问题](java/q_a/consul.md)
         * [6、 Actuator相关问题](java/q_a/actuator.md)
-* 公共规范
-    * [1、Git Commit规范](common/git-commit规范.md)
-    * [2、代码质量竞赛](common/code-review.md)
