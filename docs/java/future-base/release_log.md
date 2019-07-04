@@ -7,7 +7,7 @@
 ## 日志
 
 - 3.0-SNAPSHOT(2019-07-03)
-  
+
   1. 去除mybatis-plus(有性能问题且无法解决,限制较多未来无法自由扩展),退回mybatis
   1. 集成sharding-jdbc,支持读写分离(分表分库)
   1. 集成PageHelper
@@ -19,7 +19,8 @@
   1. data-source更名为mysql
   1. web-mvc依赖不再默认依赖data-source.使用mysql,需要单独指定依赖`<artifactId>mysql</artifactId>`
   1. 数据库连接池改用Hikari(spring boot 2官方推荐,相较于druid而言更轻量简洁,性能高)
-  
+  1. web-mv中默认依赖`lombok`
+
   TODO: 集成Mongodb
 
 - 2.0-SNAPSHOT(2019-06-08)

@@ -4,7 +4,7 @@
 
 统一使用jdk 1.8
 
-## 配置文件
+## 1. 配置文件
 
 - 系统配置(端口号,服务名,配置中心,注册中心相关)统一放在bootstrap.yml文件中
 - 业务配置统一放在application.yml文件.建议放在配置中心更好
@@ -33,15 +33,15 @@ spring:
 ```
 且这些内容必须放在该文件
 
-## maven
+## 2. maven
 
-#### groupId
+#### 2.1、groupId
 groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础架构使用,其他服务严禁使用!每个服务必须自己定义一个.比如用户服务:
 ```xml
 <parent>
   <groupId>com.chinasofti.futurelab</groupId>
   <artifactId>futurelab-base</artifactId>
-  <version>2.0-SNAPSHOT</version>
+  <version>3.0-SNAPSHOT</version>
 </parent>
 
 
@@ -52,115 +52,178 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
 <packaging>pom</packaging>
 ```
 
-## 包名
+#### 2.2、关于中台服务依赖问题
 
-每个服务的每个模块的顶级包名需要遵循以下格式:
-顶层包名格式为: com.chinasofti.futurelab.{serviceName}.{moduleName}
+1. 顶层pom(项目根目录)
 
-## .ignore
+   原则上不依赖任何依赖(除非有api,core-service必须共用的依赖)
 
-在根目录添加.ignore文件.内容如下
-```java
-target/
-!.mvn/wrapper/maven-wrapper.jar
-*.pdb
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-
-### IntelliJ IDEA ###
-.idea
-.mvn
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-/logs
-```
-
-## 日志打印
-
-日志打印必须是能帮助你定位问题的,必须将有意义的参数信息打印出来,如果是捕获了异常信息,则必须打印堆栈信息.
-
-1. 一般日志打印
-
-    ```java
-     log.info("数据同步执行完毕, 更新:{}, 新增:{}, 新增开关:{}", updateCount, addCount, alarmStatusCount);
-    ```
-    日志尽量使用占位符`{}`,使用了它,sl4j会调用对应位置的参数的toString方法(所以如果没有toString方法的参数就不建议再使用占位符了)。
-
-2. 堆栈日志打印:
-    
-    反面例子:
-    
-    ```java
-    catch (KeyManagementException e) {
-        logger.error("-------KeyManagemen{}", e.getMessage());
-    } catch (KeyStoreException e) {
-        logger.error("-------KeyStoreException{}", e.getMessage());
-    } catch (IOException e) {
-        logger.error("-------IOException{}", e.getMessage());
-    }
-    ```
-    这种日志对于生产对位没有任何帮助.
-    
-    应该调整为如下:
-    
-    ```java
-    catch (KeyManagementException e) {
-        logger.error("key管理出现未知异常,appKey="+appKey+",appSecret="+appSecret, e);
-    } catch (KeyStoreException e) {
-        logger.error("key存储失败,appKey="+appKey+",appSecret="+appSecret, e);
-    } catch (IOException e) {
-        logger.error("调用短信平台失败,appKey="+appKey+",appSecret="+appSecret, e);
-    }
-    ```
-    > 注意要打印堆栈信息的话就无法使用占位符`{}`. 如果少量参数的话可以使用字符串拼接,如果参数较多则使用StringBuilder来拼接字符串
-
-3. 如果输出的对象没有覆盖toString方法
-
-    如果输出的对象没有重写toString方法的话,除了error级别的日志,都需要先判断日志级别是否已打开.从而提高性能
-    
-    ```java
-    if (logger.isInfoEnabled()){
-       logger.info("aaaa,param:{}",param);
-    }
-    ```
-#### 敏感信息.
-
-1. 日志中原则上不允许输出敏感信息(如手机号,身份证号),如果要输出需要加密.
-2. 敏感信息不能因为后台报错而将其通过异常传递到前端.
-    
    反例:
-    ```java
-    try {
-        return localeProvincesDao.selectPage(page, queryWrapper);
-    } catch (Exception e) {
-        logger.error("分页查询失败,entity=" + queryWrapper.getEntity(), e);
-        throw new DbOperationException("分页查询失败,省份id="+id);
-    }
-    ```
-    你可以只抛出异常,异常中不携带任何信息,而通过日志记录当时发生的问题,如:
-    ```java
-    try {
-        return localeProvincesDao.selectPage(page, queryWrapper);
-    } catch (Exception e) {
-        logger.error("查询省份信息失败,id=" + id+",xxx="+xxx, e);
-        throw new DbOperationException();
-    }
-    ```
-#### 
-    
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project xmlns="http://maven.apache.org/POM/4.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+       <modelVersion>4.0.0</modelVersion>
+       <groupId>com.chinasofti.futurelab.order</groupId>
+       <artifactId>base-order</artifactId>
+       <version>1.0-SNAPSHOT</version>
+       <packaging>pom</packaging>
+   
+       <parent>
+           <groupId>com.chinasofti.futurelab</groupId>
+           <artifactId>futurelab-base</artifactId>
+           <version>3.0-SNAPSHOT</version>
+       </parent>
+       <dependencies>
+           <dependency>
+               <groupId>com.chinasofti.futurelab</groupId>
+               <artifactId>web-mvc</artifactId>
+               <version>${futurelab-base.version}</version>
+           </dependency>
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-devtools</artifactId>
+           </dependency>
+           <dependency>
+               <groupId>org.projectlombok</groupId>
+               <artifactId>lombok</artifactId>
+           </dependency>
+       </dependencies>
+       <modules>
+           <module>base-order-api</module>
+           <module>base-order-service</module>
+       </modules>
+   </project>
+   ```
+
+   正确做法:
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project xmlns="http://maven.apache.org/POM/4.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+       <modelVersion>4.0.0</modelVersion>
+       <groupId>com.chinasofti.futurelab.order</groupId>
+       <artifactId>base-order</artifactId>
+       <version>1.0-SNAPSHOT</version>
+       <packaging>pom</packaging>
+   
+       <parent>
+           <groupId>com.chinasofti.futurelab</groupId>
+           <artifactId>futurelab-base</artifactId>
+           <version>2.0-SNAPSHOT</version>
+       </parent>
+   
+       <modules>
+           <module>base-order-api</module>
+           <module>base-order-service</module>
+       </modules>
+   </project>
+   ```
+
+2. api模块不能依赖`spring-boot-devtools`,而且依赖应该尽量的少,只需要依赖它所需要的。如下:
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project xmlns="http://maven.apache.org/POM/4.0.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+       <modelVersion>4.0.0</modelVersion>
+       <artifactId>base-order-api</artifactId>
+   
+       <parent>
+           <groupId>com.chinasofti.futurelab.order</groupId>
+           <artifactId>base-order</artifactId>
+           <version>1.0-SNAPSHOT</version>
+       </parent>
+   
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-starter-openfeign</artifactId>
+               <exclusions>
+                   <exclusion>
+                       <groupId>com.google.guava</groupId>
+                       <artifactId>guava</artifactId>
+                   </exclusion>
+               </exclusions>
+           </dependency>
+           <dependency>
+               <groupId>io.springfox</groupId>
+               <artifactId>springfox-swagger2</artifactId>
+           </dependency>
+       </dependencies>
+   </project>
+   ```
+
+   > api模块一般只需要feign,swagger即可,因为它需要提供feignclient,和swagger描述
+
+3. core-service模块
+
+   例子:
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   
+   	<modelVersion>4.0.0</modelVersion>
+   	<artifactId>base-order-service</artifactId>
+   
+   	<parent>
+   		<groupId>com.chinasofti.futurelab.order</groupId>
+   		<artifactId>base-order</artifactId>
+   		<version>1.0-SNAPSHOT</version>
+   	</parent>
+   
+   
+   	<dependencies>
+   		<dependency>
+   			<groupId>${groupId}</groupId>
+   			<artifactId>base-order-api</artifactId>
+   			<version>${version}</version>
+   		</dependency>
+   		<dependency>
+   			<groupId>com.chinasofti.futurelab</groupId>
+   			<artifactId>web-mvc</artifactId>
+   			<version>${futurelab-base.version}</version>
+   		</dependency>
+   		<dependency>
+   			<groupId>com.chinasofti.futurelab</groupId>
+   			<artifactId>mysql</artifactId>
+   			<version>${futurelab-base.version}</version>
+   		</dependency>
+           <dependency>
+               <groupId>org.json</groupId>
+               <artifactId>json</artifactId>
+   			<version>20180813</version>
+           </dependency>
+   
+   		<dependency>
+   			<groupId>com.alipay.sdk</groupId>
+   			<artifactId>alipay-sdk-java</artifactId>
+   			<version>3.7.26.ALL</version>
+   		</dependency>
+       </dependencies>
+   
+   
+   	<build>
+   		<plugins>
+   			<plugin>
+   				<groupId>org.springframework.boot</groupId>
+   				<artifactId>spring-boot-maven-plugin</artifactId>
+   				<executions>
+   					<execution>
+   						<goals>
+   							<goal>repackage</goal>
+   						</goals>
+   					</execution>
+   				</executions>
+   			</plugin>
+   		</plugins>
+   	</build>
+   </project>
+   ```
