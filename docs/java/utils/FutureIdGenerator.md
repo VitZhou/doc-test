@@ -27,5 +27,5 @@ millisecond:20190704205144130
 uuid:b3e148b2ed2e80abb482d01959ff1dbc
 ```
 
-> timeId建议在`订单号`之类的表中使用
+> timeId建议在`订单号`之类的场景中
 
