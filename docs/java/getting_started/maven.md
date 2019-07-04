@@ -1,6 +1,6 @@
 # Maven Settings文件设置
 
-将以下内容添加到你的maven settings.xml文件中
+将公司以来仓库添加到你的maven settings.xml文件中
 
 ```xml
 <profile>

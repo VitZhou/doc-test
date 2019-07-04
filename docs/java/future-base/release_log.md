@@ -18,6 +18,7 @@
   1. 升级spring cloud至Greenwich.SR2
   1. data-source更名为mysql
   1. web-mvc依赖不再默认依赖data-source.使用mysql,需要单独指定依赖`<artifactId>mysql</artifactId>`
+  1. 数据库连接池改用Hikari(spring boot 2官方推荐,相较于druid而言更轻量简洁,性能高)
   
   TODO: 集成Mongodb
 
@@ -41,5 +42,3 @@
   7. zookeeper
      1. 基于zk的分布式调度(具体请查看分布式调度文档)
      
-
-  
