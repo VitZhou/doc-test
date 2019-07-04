@@ -11,7 +11,7 @@
   1. 去除mybatis-plus(有性能问题且无法解决,限制较多未来无法自由扩展),退回mybatis
   1. 集成sharding-jdbc,支持读写分离(分表分库)
   1. 集成PageHelper
-  1. 提供分布式id(IdGenerator)
+  1. 提供分布式id(FutureIdGenerator)
   1. 集成druid spring boot starter
   1. PageResponseHelper与PageResponseObject名字互换
   1. 升级spring boot至2.1.6.RELEASE
