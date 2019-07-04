@@ -222,3 +222,121 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
    	</build>
    </project>
    ```
+
+
+## 3. 日志打印
+
+日志打印必须是能帮助你定位问题的,必须将有意义的参数信息打印出来,如果是捕获了异常信息,则必须打印堆栈信息.
+
+1. 一般日志打印
+
+    ```java
+     log.info("数据同步执行完毕, 更新:{}, 新增:{}, 新增开关:{}", updateCount, addCount, alarmStatusCount);
+    ```
+    日志尽量使用占位符`{}`,使用了它,sl4j会调用对应位置的参数的toString方法(所以如果没有toString方法的参数就不建议再使用占位符了)。
+
+2. 堆栈日志打印:
+  
+    反面例子:
+    
+    ```java
+    catch (KeyManagementException e) {
+        logger.error("-------KeyManagemen{}", e.getMessage());
+    } catch (KeyStoreException e) {
+        logger.error("-------KeyStoreException{}", e.getMessage());
+    } catch (IOException e) {
+        logger.error("-------IOException{}", e.getMessage());
+    }
+    ```
+    这种日志对于生产对位没有任何帮助.
+    
+    应该调整为如下:
+    
+    ```java
+    catch (KeyManagementException e) {
+        logger.error("key管理出现未知异常,appKey="+appKey+",appSecret="+appSecret, e);
+    } catch (KeyStoreException e) {
+        logger.error("key存储失败,appKey="+appKey+",appSecret="+appSecret, e);
+    } catch (IOException e) {
+        logger.error("调用短信平台失败,appKey="+appKey+",appSecret="+appSecret, e);
+    }
+    ```
+    > 注意要打印堆栈信息的话就无法使用占位符`{}`. 如果少量参数的话可以使用字符串拼接,如果参数较多则使用StringBuilder来拼接字符串
+
+3. 如果输出的对象没有覆盖toString方法
+
+    如果输出的对象没有重写toString方法的话,除了error级别的日志,都需要先判断日志级别是否已打开.从而提高性能
+    
+    ```java
+    if (logger.isInfoEnabled()){
+       logger.info("aaaa,param:{}",param);
+    }
+    ```
+#### 敏感信息.
+
+1. 日志中原则上不允许输出敏感信息(如手机号,身份证号),如果要输出需要加密.
+2. 敏感信息不能因为后台报错而将其通过异常传递到前端.
+  
+   反例:
+    ```java
+    try {
+        return localeProvincesDao.selectPage(page, queryWrapper);
+    } catch (Exception e) {
+        logger.error("分页查询失败,entity=" + queryWrapper.getEntity(), e);
+        throw new DbOperationException("分页查询失败,省份id="+id);
+    }
+    ```
+    你可以只抛出异常,异常中不携带任何信息,而通过日志记录当时发生的问题,如:
+    ```java
+    try {
+        return localeProvincesDao.selectPage(page, queryWrapper);
+    } catch (Exception e) {
+        logger.error("查询省份信息失败,id=" + id+",xxx="+xxx, e);
+        throw new DbOperationException();
+    }
+    ```
+   
+## 4. 关于循环调用
+
+不允许循环调用接口,这样做法效率太低下,导致最终接口响应时间太长,甚至超时
+
+反例
+
+```java
+for(...){
+    restTemplate.get(uri)....
+}
+```
+
+或
+
+```java
+for(...){
+   baseBuilder.execute(restRequest); 
+}
+```
+
+解决方案.如果聚合服务没法一次性调用中台服务的接口,则可以要求中台服务提供批量接口. 通过批量接口一次洗将参数传入. 如果需要同时调用多个服务的接口建议使用多线程异步调用的方式.例如:
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(2);
+FutureTask<ResponseObject> future = new FutureTask<>(new ComputeTask());
+FutureTask<ResponseObject> future2 = new FutureTask<>(()->{
+    return ResponseObject.success();
+});
+executor.submit(future);
+executor.submit(future2);
+
+ResponseObject responseObject = future.get();
+ResponseObject responseObject2 = future2.get();
+```
+
+```java
+private static class ComputeTask implements Callable<ResponseObject> {
+    @Override
+    public ResponseObject call() throws Exception {
+        return restTemplate.get(...);
+    }
+}
+```
+
