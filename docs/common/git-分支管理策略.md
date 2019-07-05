@@ -14,7 +14,7 @@
 | 分支名 | 命名规则 | 分支来源 | 功能 | 说明 | 
 | --- | --- | --- | --- | --- |
 | hotfix-* | hotfix-{修复版本号}  | master | 修复需紧急上线的bug | 修改后合并到dev、master分支|
-| feature-* | feature-{功能描述}-{日期yyMMdd}  | dev | 用于新功能开发 | 本地验证功能后合并到dev， 当dev分支合并到sit时，应及时删除该feature分支|
+| feature-* | feature-{功能描述}-{日期MMdd}  | dev | 用于新功能开发 | 本地验证功能后合并到dev， 当dev分支合并到sit时，应及时删除该feature分支|
 | devfix-* | devfix-{功能描述}  | dev | 修复sit环境验证失败的功能 | 修复后合并到dev， 当dev分支合并到sit时，应及时删除该devfix分支|
 
 ### tag版本说明
@@ -51,18 +51,18 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
 ### git命令示例
 ```
   切换至dev分支
-  git checkout develop
+  git checkout dev
 
   同步最新代码
-  git pull
+  git pull origin dev
 
   从dev分支开一条feature分支
-  git checkout -b feature-module1-0704 develop
+  git checkout -b feature-module1-0704 dev
 
   功能开发完成合并到dev
-  git checkout develop
+  git checkout dev
   git merge --no-ff feature-module1-0704
 
   dev分支push到远端完成自动部署
-  git push origin develop
+  git push origin dev
 ```
