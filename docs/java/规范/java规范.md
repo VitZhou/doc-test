@@ -346,3 +346,4 @@ private static class ComputeTask implements Callable<ResponseObject> {
 
 > 注意这里只是举例,线程池的具体参数要根据业务而定,而不是照抄.尤其是线程池的大小.且必须给线程定义名称,方便定位问题
 
+

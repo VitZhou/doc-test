@@ -20,6 +20,7 @@
 1. 在api模块使用entity,依赖了devtools的扣2两分
 1. 使用map或entity接收返回参数的扣2分
 1. 规范中其他明确禁止的扣2分
+1. 不允许使用restTemplate之外的工具请求中台服务.也不允许自己new.否则扣1分(因为base提供的restTemplate做了埋点)
 
 #### 2.2、前端
 
