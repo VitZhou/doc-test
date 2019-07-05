@@ -1,6 +1,5 @@
 ### 介绍
-基于git flow分支管理制定的分支规范
-![git-flow-pic.png](git-flow-pic.png)
+基于git flow分支策略制定的分支规范，由于我们有不同环境，每个环境的代码版本会有所区别，合理控制各环境分支代码有助于避免环境功能混乱
 
 ### 常设分支
 | 分支名 | 对应环境 | 自动部署 | 说明 |
@@ -15,7 +14,7 @@
 | 分支名 | 命名规则 | 分支来源 | 功能 | 说明 | 
 | --- | --- | --- | --- | --- |
 | hotfix-* | hotfix-{修复版本号}  | master | 修复需紧急上线的bug | 修改后合并到dev、master分支|
-| feature-* | feature-{功能描述}-{日期yyMMdd}  | dev | 用于新功能开发 | 本地验证功能后合并到dev， 当dev分支合并到sit时，应及时删除该feature分支|
+| feature-* | feature-{功能描述}-{日期MMdd}  | dev | 用于新功能开发 | 本地验证功能后合并到dev， 当dev分支合并到sit时，应及时删除该feature分支|
 | devfix-* | devfix-{功能描述}  | dev | 修复sit环境验证失败的功能 | 修复后合并到dev， 当dev分支合并到sit时，应及时删除该devfix分支|
 
 ### tag版本说明
@@ -47,22 +46,23 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
    * 发布完成：在master分支上打tag标记版本号(vX.Y.Z)
    * 生产bug修复： 从master分支拉取hotfix分支，修复bug后合并到dev、[sit、uat]、master，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
 
+![git-flow-pic.png](git-flow-pic.png)
 
 ### git命令示例
 ```
   切换至dev分支
-  git checkout develop
+  git checkout dev
 
   同步最新代码
-  git pull
+  git pull origin dev
 
   从dev分支开一条feature分支
-  git checkout -b feature-module1-0704 develop
+  git checkout -b feature-module1-0704 dev
 
   功能开发完成合并到dev
-  git checkout develop
+  git checkout dev
   git merge --no-ff feature-module1-0704
 
   dev分支push到远端完成自动部署
-  git push origin develop
+  git push origin dev
 ```
