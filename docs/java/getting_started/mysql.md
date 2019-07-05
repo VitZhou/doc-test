@@ -14,21 +14,8 @@
 </dependency>
 ```
 
-## main
 
-```java
-@Import({BaseConfiguration.class, DiscoveryClientConfiguration.class, WebApplication.class,
-        MyBatisDataSourceConfiguration.class})
-@SpringBootApplication
-public class ServerApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
-    }
-}
-```
-
-## MyBatisDataSourceConfiguration
+## MySqlConfiguration
 
 这个configuration类中添加了:
 ```java
