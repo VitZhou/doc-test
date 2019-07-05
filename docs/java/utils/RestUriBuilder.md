@@ -81,3 +81,17 @@ RestRequest<String> restRequest = new RestRequest.Builder<String>()
                 .withBody(bodyParam) //注意,bodyParam是对象.而不是hashMap
                 .build();
 ```
+
+## 4、关于字段不一致的问题
+
+此问题只会存在聚合服务.
+
+假设聚合服务暴露给前端的字段为`name`,而中台服务返回的字段为`id`.这时候因为字段不一样,导致json反序列化的时候没法给`name`复制.此时可以通过在dto对象的`name`属性中添加`@JsonAlias`注解来解决.例如:
+
+```java
+public class Person{
+    @JsonAlias('id')
+    private String name;
+}
+```
+
