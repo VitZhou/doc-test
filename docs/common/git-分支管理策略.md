@@ -1,6 +1,5 @@
 ### 介绍
-基于git flow分支管理制定的分支规范
-![git-flow-pic.png](git-flow-pic.png)
+基于git flow分支策略制定的分支规范，由于我们有不同环境，每个环境的代码版本会有所区别，合理控制各环境分支代码有助于避免环境功能混乱
 
 ### 常设分支
 | 分支名 | 对应环境 | 自动部署 | 说明 |
@@ -47,6 +46,7 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
    * 发布完成：在master分支上打tag标记版本号(vX.Y.Z)
    * 生产bug修复： 从master分支拉取hotfix分支，修复bug后合并到dev、[sit、uat]、master，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
 
+![git-flow-pic.png](git-flow-pic.png)
 
 ### git命令示例
 ```
