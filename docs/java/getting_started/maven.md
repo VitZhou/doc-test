@@ -35,3 +35,16 @@
 ```
 
 > 相关的账号密码找各自的负责人要
+
+### 添加阿里云加速镜像
+
+```xml
+<mirrors>
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>        
+    </mirror>
+</mirrors>
+```
