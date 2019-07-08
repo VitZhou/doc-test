@@ -129,3 +129,7 @@ spring:
 
 > 注意jdbcUrl是HikariDataSource需要的参数
 
+
+### mysql主从部署
+
+看[这篇博客](https://www.jianshu.com/p/b0cf461451fb)
