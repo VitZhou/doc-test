@@ -6,8 +6,7 @@
 | --- | --- | --- | --- |
 | dev | 开发联调 | 是 | 新功能开发不直接在该分支上进行开发，需拉feature分支 |
 | sit | 集成测试 | 是 | 从dev分支合并 |
-| uat | 用户验收 | 否 | 从sit分支合并 |
-| master | 生产环境  | 否  | 从uat或hotfix分支合并，每次合并发布后打tag新增版本 |
+| master | UAT/生产环境  | 否  | 从sit或hotfix分支合并，UAT验证后打tag版本，进行生产发布 |
 
 ### 临时分支
 
@@ -26,7 +25,7 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
 
 ```
 
-### 分支开发流程
+### 分支开发流程(中台, 基础服务)
 
 > （重要）： 常设分支的代码合并需遵循该顺序 dev -> sit -> uat -> master 
 
@@ -39,19 +38,34 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
    * 联调失败： 在相应的future分支上修改并重新merge到dev分支重新联调
      
 4. 集成测试(sit)： 
-   * 测试通过： 合并到uat分支进行用户验收，删除feature分支
+   * 测试通过： 项目管理员合并到master主干进行用户验收，删除feature分支
    * 测试失败： 在相应的future分支上修改并重新merge到dev分支重新联调走流程
    
-5. 用户验收(uat)： 
-   * 验收通过： 合并提交到master分支进行生产发布
+5. 用户验收(master)： 
+   * 验收通过： 项目管理员打tag版本，进行生产发布
    * 验收失败： 从dev分支分出devfix分支进行修复重回dev联调流程验证或等待下版本验收(按需版本回退)
    
 6. 生产发布(master)： 
-   * 发布完成：在master分支上打tag标记版本号(vX.Y.Z)
-   * 生产bug修复： 从master分支拉取hotfix分支，修复bug后合并到dev、[sit、uat]、master，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
+   * 生产bug修复： 从master分支拉取hotfix分支，修复bug后合并到dev、[sit]、master，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
 
-![git-flow-pic2.png](git-flow-pic2.png)
+![git-pic3.png](git-pic3.png)
 
+### 分支开发流程(聚合服务)
+1. 新项目开发（dev）：管理员创建项目，开dev分支进行初始开发
+
+2. 功能开发/非生产bug修复(dev)：在dev分支进行功能开发以及bug修复，验证通过后提交代码
+     
+3. 集成测试(sit)： 项目管理员合并到sit分支进行集成测试
+   * 测试通过： 项目管理员合并到master主干进行用户验收
+   * 测试失败： 开发人员在dev分支上直接修改，验证后重新提交代码，重走集成测试流程
+   
+4. 用户验收(master)： 
+   * 验收通过： 项目管理员打tag版本，进行生产发布
+   * 验收失败： 开发人员在dev分支上直接修改，验证后重新提交代码，重走集成测试流程
+   
+5. 生产发布(master)： 
+   * 生产bug修复： 从master分支拉取hotfix分支，项目管理员合并到dev、master分支，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
+![git-aggre-pic.png](git-aggre-pic.png)
 ### git命令示例
 ```
   切换至dev分支
