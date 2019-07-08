@@ -33,28 +33,48 @@ app:
                 .withUri("example/2/" + name)
                 .withMethod(HttpMethod.GET)
                 .build();
-        Optional<ResponseObject<String>> optional = baseBuilder.execute(restRequest);
+        Optional<ResponseObject<String>> optional = baseBuilder.one(restRequest);
         return optional.get();
     }
     ```
 
-1. 如果返回值是个集合类型则使用RestUriPageBuilder
+1. 如果返回值是个集合类型则
 
     ```java
     @Autowired
-    private RestUriPageBuilder builder;
-
-    public PageResponseHelper<String> example(@PathVariable String name){
+    private RestUriBaseBuilder builder;
+    
+    public ListResponseObject<String> example(@PathVariable String name){
         RestRequest<String> restRequest = new RestRequest.Builder<String>()
                 .withClazz(String.class)
                 .withServiceName("exampleService")
                 .withUri("example/" + name)
                 .withMethod(HttpMethod.GET)
                 .build();
-        Optional<PageResponseHelper<String>> optional = builder.execute(restRequest);
+        Optional<ListResponseObject<String>> optional = builder.list(restRequest);
         return optional.orElseGet(() -> PageResponseHelper.internalError("cuole"));
     }
     ```
+
+1. 如果需要分页
+
+    ```java
+    @Autowired
+    private RestUriBaseBuilder builder;
+    
+    public PageResponseObject<String> example(@PathVariable String name){
+        RestRequest<String> restRequest = new RestRequest.Builder<String>()
+                .withClazz(String.class)
+                .withServiceName("exampleService")
+                .withUri("example/" + name)
+                .withMethod(HttpMethod.GET)
+                .build();
+        Optional<PageResponseObject<String>> optional = builder.page(restRequest);
+        return optional.orElseGet(() -> PageResponseHelper.internalError("cuole"));
+    }
+    ```
+
+> RestUriPageBuilder已过期,未来将会删除
 
 ## 3、参数说明
 
