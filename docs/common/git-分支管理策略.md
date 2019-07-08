@@ -66,7 +66,9 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
 5. 生产发布(master)： 
    * 生产bug修复： 从master分支拉取hotfix分支，项目管理员合并到dev、master分支，完成生产发布后再次打tag标记版本号，删除相应的hotfix分支
 ![git-aggre-pic.png](git-aggre-pic.png)
+
 ### git命令示例
+
 ```
   切换至dev分支
   git checkout dev
@@ -83,4 +85,5 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
 
   dev分支push到远端完成自动部署
   git push origin dev
+  
 ```
