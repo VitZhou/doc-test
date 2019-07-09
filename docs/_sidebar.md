@@ -23,7 +23,6 @@
         * mysql
             * [1、 mysql](java/module/mysql/index.md)
             * [2、 PageHelper](java/module/mysql/pageHelper.md)
-            * [3、 Dozer](https://mp.weixin.qq.com/s/tK32GXB3cODBDSFaRDc3bw)
         * mongo
             * [1、MongoDb](java/module/mongo/index.md)
     * 四、规范
