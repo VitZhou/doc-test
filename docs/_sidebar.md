@@ -1,5 +1,5 @@
 * 公共
-    * [1、Git分支管理规范](common/git-分支管理策略.md)
+    * [1、Git分支管理规范（试行）](common/git-分支管理策略.md)
     * [2、Git Commit规范](common/git-commit规范.md)
     * [3、代码质量竞赛](common/code-review.md)
 * 前端
