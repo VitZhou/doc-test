@@ -15,7 +15,7 @@
         * [3、 聚合服务](java/getting_started/聚合.md)
         * [4、 中台服务](java/getting_started/中台.md)
         * [5、 mysql](java/getting_started/mysql.md)
-        * [5、 mave脚手架](java/getting_started/脚手架.md)
+        * [6、 mave脚手架](java/getting_started/脚手架.md)
     * 三、各模块功能
         * zookeeper
             * [1、 分布式定时任务](java/module/zookeeper/调度.md)
