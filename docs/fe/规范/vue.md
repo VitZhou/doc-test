@@ -58,28 +58,27 @@ module.exports = {
 
 务必按照官方推荐的[风格指南](https://cn.vuejs.org/v2/style-guide/)开发项目。
 
-项目结合 `ESlint` 后
+所有项目必须强制使用 `ESlint` 。
 
-本规范对一些官方没有指定的部分进行了明确规范。
+本规范对一些官方未指定的部分进行了明确规范。
 
 ### 2.1、文件夹命名
 
 项目利用流水线构建，流水线操作系统为大小写敏感的Linux。
-故所有文件夹应当使用 **英文单词小写** 。
+故所有文件夹应当使用 **小写英文单词** 。
 
 如果名称由多个单词组成应该使用横线连接。
 
 完整例子如下：
 ```
-└── src
-    ├── components
+└── src/
+    ├── components/
         ├── ComponentA.vue
         └── ComponentB.vue
-    ├── theme-configurator
-        ├──  theme1
-        └──  theme2
-
-    └── theme
+    ├── theme-configurator/
+        ├──  theme1/
+        └──  theme2/
+    └── theme/
 ```
 
 ### 2.2、组件命名
