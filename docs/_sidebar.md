@@ -41,6 +41,7 @@
     * 七、鉴权
         * [1、流程](java/auth/流程.md)
         * [2、接入](java/auth/接入.md)
+           * [统一userInfo说明](java/auth/统一userInfo.md)
     * 八、 通用工具类
         * [1、restTemplate封装](java/utils/RestUriBuilder.md)
         * [1、FutureIdGenerator](java/utils/FutureIdGenerator.md)
