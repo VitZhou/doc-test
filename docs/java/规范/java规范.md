@@ -142,6 +142,11 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
    
        <dependencies>
            <dependency>
+               <groupId>com.chinasofti.futurelab</groupId>
+               <artifactId>core</artifactId>
+               <version>${futurelab-base.version}</version>
+           </dependency>
+           <dependency>
                <groupId>org.springframework.cloud</groupId>
                <artifactId>spring-cloud-starter-openfeign</artifactId>
                <exclusions>
