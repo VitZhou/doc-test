@@ -102,33 +102,6 @@ Mybatis-plus的好处:
 
 >不允许使用其它的依赖(例如BaseMapper).他们跟mybatis-plus有着类似的问题.mybatis-plus之类的只适合企业内部等小型系统.不适合做互联网系统
 
-## 配置
-
-在配置中心加如下配置:
-
-```yaml
-spring:
-  shardingsphere:
-    datasource:
-      names: master,slave
-      master:
-        type: com.zaxxer.hikari.HikariDataSource
-        driverClassName: com.mysql.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8 
-        username: root
-        password: root
-      slave:
-        type: com.zaxxer.hikari.HikariDataSource
-        jdbcUrl: jdbc:mysql://localhost:33066/future_demo?useSSL=false&characterEncoding=utf8
-        username: root
-        password: root
-        maximumPoolSize: 50 #最大连接数,可不填base已经设置该值
-        maxLifetime: 300000 #最大空闲数,可不填base已经设置该值
-        driver-class-name: com.mysql.jdbc.Driver
-```
-
-> 注意jdbcUrl是HikariDataSource需要的参数
-
 
 ### mysql主从部署
 
