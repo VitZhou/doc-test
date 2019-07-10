@@ -31,6 +31,7 @@
         * [2、 部署规范](java/规范/部署.md)
         * [3、 微服务规范](java/规范/微服务规范.md)
         * [4、 服务器安全规范](java/规范/服务器安全规范.md)
+        * [4、 金钱相关规范](java/规范/金钱相关规范.md)
     * 五、配置
         * [1、 基础配置](java/config/基础.md)
         * [2、 Hystrix配置](java/config/Hystrix.md)
