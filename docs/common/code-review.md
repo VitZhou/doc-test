@@ -19,6 +19,9 @@
 1. maven依赖不规范的扣3分
 1. 在api模块使用entity,依赖了devtools的扣2两分
 1. 使用map或entity接收返回参数的扣2分
+1. try catch捕获的异常应该通过logger输出日志，禁止直接printStackTrace()或捕获后不做任何操作. 否则扣2分![java规范-3.日志打印](java/规范/java规范.md)
+1. 应通过线程池进行线程操作，禁止在代码中直接new一个线程操作，否则扣2分 ![java规范-5.多线程](java/规范/java规范.md)
+1. 出现硬编码的扣1分![java规范-6.常量定义](java/规范/java规范.md)
 1. 规范中其他明确禁止的扣2分
 1. 不允许使用restTemplate之外的工具请求中台服务.也不允许自己new.否则扣1分(因为base提供的restTemplate做了埋点)
 

@@ -242,7 +242,7 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
 
 2. 堆栈日志打印:
   
-    反面例子:
+    反面例子1:
     
     ```java
     catch (KeyManagementException e) {
@@ -254,6 +254,15 @@ groupId不能使用顶层坐标`com.chinasofti.futurelab`,顶级坐标归基础�
     }
     ```
     这种日志对于生产对位没有任何帮助.
+    
+    反面例子2:
+        
+    ```java
+    catch (Exception e) {
+        e.printStackTrace();
+    } 
+    ```
+    异常信息并不会输出到日志文件中
     
     应该调整为如下:
     
@@ -352,3 +361,77 @@ private static class ComputeTask implements Callable<ResponseObject> {
 > 注意这里只是举例,线程池的具体参数要根据业务而定,而不是照抄.尤其是线程池的大小.且必须给线程定义名称,方便定位问题
 
 
+### 5. 多线程使用
+
+不要直接在方法中new线程进行操作，应通过线程池操作
+
+反例
+
+```
+Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //do something...
+            }
+        });
+thread.start();
+```
+
+应调整为线程池操作
+
+```
+@Configuration
+public class ThreadPoolConfiguration implements InitializingBean, DisposableBean {
+
+    private ExecutorService executorService = null;
+
+    @Override
+    public void destroy() throws Exception {
+        if (executorService != null) {
+            executorService.shutdown();
+        }
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        //Executors含多种构造方法，选择合适构造方式
+        executorService = Executors.newFixedThreadPool(2,
+                        new ThreadFactoryBuilder().setNameFormat("do-somethin-%d").build());
+    }
+}
+
+public SomeTask implements Runnable {
+    @Override
+    public void run() {
+        //do something...
+    }
+    
+}
+```
+```
+@Autowired
+private ExecutorService executorService
+
+···
+
+SomeTask task = new SomeTask();
+executorService.execute(task);
+
+```
+
+### 6. 常量定义
+代码中不应使用硬编码，而是通过定义常量来使用
+
+反例
+```
+ String result = map.get("abc");
+```
+
+应调整为
+```
+//如果多个类均使用到下面常量，应提取到公共常量类中
+private static final String ABC = "abc";
+···
+String result = map.get(ABC);
+
+```
