@@ -3,7 +3,8 @@
     * [2、Git Commit规范](common/git-commit规范.md)
     * [3、代码质量竞赛](common/code-review.md)
 * 前端
-    * [1、index](vue/index.md)
+    * 一、规范
+        * [1、Vue规范](fe/规范/vue.md)
 * 后端
     * 一、Future base介绍
         * [1、 简介(Introduction)](java/future-base/简介.md)
