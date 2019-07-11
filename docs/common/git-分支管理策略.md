@@ -87,3 +87,6 @@ Z: 修订号， 对bug的修复或微小调整，修订号+1, 起始版本可以
   git push origin dev
   
 ```
+
+### git推荐工具
+Sourcetree
