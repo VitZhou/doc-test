@@ -2,6 +2,7 @@
     * [1、Git分支管理规范（试行）](common/git-分支管理策略.md)
     * [2、Git Commit规范](common/git-commit规范.md)
     * [3、代码质量竞赛](common/code-review.md)
+    * [4、日常review](common/日常review.md)
 * 前端
     * 一、规范
         * [1、Vue规范](fe/规范/vue.md)
