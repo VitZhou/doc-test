@@ -71,7 +71,7 @@ app:
     }
     ```
 
-> RestUriPageBuilder已过期,未来将会删除
+> RestUriPageBuilder已过期,已删除. build返回的responseObject不会为空,但是它的data不一定,所以responseObject的data属性记得判空
 
 ## 3、参数说明
 
@@ -112,5 +112,47 @@ public class Person{
 }
 ```
 
+## 异步并行
+
+如果聚合的接口存在调用多个中台接口,且这些中台接口之间不存在依赖关系(例如中台B接口的参数依赖A接口的返回值则表示他们之间存在依赖关系),则可以使用异步api,来并行执行提升效率.
+
+使用示例如下:
+
+```java
+ @Autowired
+private AsyncRestUriBaseBuilder asyncRestUriBaseBuilder;
+
+
+public ResponseObject<String> doSomething(String id) {
+    RestRequest<String> restRequest = new RestRequest.Builder<String>()
+            .withClazz(String.class)
+            .withServiceName("demo-middle")
+            .withUri("empty/" + id)
+            .withMethod(HttpMethod.GET)
+            .build();
+
+    RestRequest<String> restRequest2 = new RestRequest.Builder<String>()
+            .withClazz(String.class)
+            .withServiceName("demo-middle")
+            .withUri("empty/" + id)
+            .withMethod(HttpMethod.GET)
+            .build();
+    FutureTask<ResponseObject<String>> future1 = asyncRestUriBaseBuilder.one(restRequest);
+    FutureTask<ResponseObject<String>> future2 = asyncRestUriBaseBuilder.one(restRequest);
+    try {
+        ResponseObject<String> object = future1.get();
+        ResponseObject<String> responseObject = future2.get();
+    } catch (Exception e) {
+        throw new BaseException("{描述你的业务内},restRequest=" + restRequest);
+    }
+}
+```
+
+### AsyncRestUriBaseBuilder的线程池大小
+
+AsyncRestUriBaseBuilder底层采用了ExecutorService,默认线程数为20.如果要调高的话,只需在配置中心修改如下配置即可:
+```xml
+app.rest.thread.count: 20
+```
 
 
