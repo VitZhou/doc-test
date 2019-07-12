@@ -29,7 +29,11 @@ RestRequest<String> restRequest2 = new RestRequest.Builder<String>() //@fixed: �
 
 ## review范围
 
-对新功能的代码进行review,旧代码留下一个季度时间修改. 11月1日起开始review旧代码
+对新功能的代码进行review,旧代码留下一个季度时间修改. 11月1日起开始检测旧代码
+
+#### 旧代码review
+
+每次review都会review部分旧代码,但是不强制立刻修改,在有空的时候要去重构.并在争取在一个季度后把旧代码重构完
 
 ## 要求
 
