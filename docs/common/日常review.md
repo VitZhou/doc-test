@@ -37,6 +37,8 @@ RestRequest<String> restRequest2 = new RestRequest.Builder<String>() //@fixed: �
 2. 在每周五下午进行的`代码质量竞赛`上,如果看到了有未重构的@reject存在,发现一次扣1分.
 3. 如果自己删除了@reject的,发现一次扣10分
 
+> 难度比较大的(例如性能问题)无法当周解决的,可以提出,同意后可以延长时间,并由review人员进行标记最后完成时间,比如`@reject 10月1日`。延迟时间不能超过5个工作日
+
 ## 职责
 
 - 架构组人员: 负责review,验收以及指导开发人员进行代码重构
