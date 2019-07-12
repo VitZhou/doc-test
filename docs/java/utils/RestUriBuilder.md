@@ -33,8 +33,7 @@ app:
                 .withUri("example/2/" + name)
                 .withMethod(HttpMethod.GET)
                 .build();
-        Optional<ResponseObject<String>> optional = baseBuilder.one(restRequest);
-        return optional.get();
+        return baseBuilder.one(restRequest);
     }
     ```
 
@@ -51,8 +50,7 @@ app:
                 .withUri("example/" + name)
                 .withMethod(HttpMethod.GET)
                 .build();
-        Optional<ListResponseObject<String>> optional = builder.list(restRequest);
-        return optional.orElseGet(() -> PageResponseHelper.internalError("cuole"));
+        return builder.list(restRequest);
     }
     ```
 
@@ -69,8 +67,7 @@ app:
                 .withUri("example/" + name)
                 .withMethod(HttpMethod.GET)
                 .build();
-        Optional<PageResponseObject<String>> optional = builder.page(restRequest);
-        return optional.orElseGet(() -> PageResponseHelper.internalError("cuole"));
+        return builder.page(restRequest);
     }
     ```
 
@@ -114,4 +111,6 @@ public class Person{
     private String name;
 }
 ```
+
+
 
