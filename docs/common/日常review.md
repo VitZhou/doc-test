@@ -27,6 +27,10 @@ RestRequest<String> restRequest2 = new RestRequest.Builder<String>() //@fixed: �
 
 架构组人员验收觉得可以之后可以删除@fixed注释. 如果觉得还需要调整则继续改回@reject并写上相关建议.
 
+## review范围
+
+对新功能的代码进行review,旧代码留下一个季度时间修改. 11月1日起开始review旧代码
+
 ## 要求
 
 1. 所有的打了@reject的,需要重构的地方原则都需要当周解决.
