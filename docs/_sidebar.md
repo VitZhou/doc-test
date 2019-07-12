@@ -46,7 +46,7 @@
         * [2、接入](java/auth/接入.md)
              * [2.2、统一userInfo说明](java/auth/统一userInfo.md)
     * 八、 通用工具类
-        * [1、restTemplate封装](java/utils/RestUriBuilder.md)
+        * [1、RestUriBuilder](java/utils/RestUriBuilder.md)
         * [1、FutureIdGenerator](java/utils/FutureIdGenerator.md)
     * 九、Q & A 及关键信息说明
         * [1、 java相关问题](java/q_a/java.md)
