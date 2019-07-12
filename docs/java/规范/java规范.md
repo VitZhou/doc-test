@@ -330,32 +330,9 @@ for(...){
 }
 ```
 
-解决方案.如果聚合服务没法一次性调用中台服务的接口,则可以要求中台服务提供批量接口. 通过批量接口一次性将参数传入. 如果需要同时调用多个服务的接口建议使用多线程异步调用的方式.例如:
+解决方案.如果聚合服务没法一次性调用中台服务的接口,则可以要求中台服务提供批量接口. 通过批量接口一次性将参数传入. 如果需要同时调用多个服务的接口建议使用多线程异步调用的方式.具体请看[这里](../../java/utils/RestUriBuilder.md)
 
-```java
-private static ExecutorService executor = Executors.newFixedThreadPool(2,
-                new ThreadFactoryBuilder().setNameFormat("do-somethin-%d").build());  
 
-public ResponseObject doSomethin(){
-    FutureTask<ResponseObject> future = new FutureTask<>(new ComputeTask());
-    FutureTask<ResponseObject> future2 = new FutureTask<>(()->{
-        return ResponseObject.success();
-    });
-    executor.submit(future);
-    executor.submit(future2);
-    
-    ResponseObject responseObject = future.get();
-    ResponseObject responseObject2 = future2.get();
-}
-```
-
-```java
-private static class ComputeTask implements Callable<ResponseObject> {
-    @Override
-    public ResponseObject call() throws Exception {
-        return restTemplate.get(...);
-    }
-}
 ```
 
 > 注意这里只是举例,线程池的具体参数要根据业务而定,而不是照抄.尤其是线程池的大小.且必须给线程定义名称,方便定位问题
