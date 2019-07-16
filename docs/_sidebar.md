@@ -6,6 +6,8 @@
 * 前端
     * 一、规范
         * [1、Vue规范](fe/规范/vue.md)
+    * 二、配置
+        * [1、lint配置](fe/配置/style.md)
 * 后端
     * 一、Future base介绍
         * [1、 简介(Introduction)](java/future-base/简介.md)
