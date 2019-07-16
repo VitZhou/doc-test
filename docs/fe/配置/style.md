@@ -22,6 +22,9 @@ trim_trailing_whitespace = true
 
 ## ESLint校验
 
+利用ESLint可以帮助发现各种低级错误，
+并且代码风格统一后，也能降低维护和debug成本。
+
 ### Webstorm
 
 直接支持eslint，开箱即用。
@@ -101,6 +104,7 @@ Mac用户使用 ` Command Palette (⇧⌘P)`快捷键，Windows用户使用 `Com
         }
       },
     "vetur.format.scriptInitialIndent": true
-    ```
+    
+```
 
-    可以实现保存时自动格式化代码功能。
+实现保存时自动格式化代码功能。
