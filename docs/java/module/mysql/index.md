@@ -78,6 +78,7 @@ spring:
         show: true #是否显示sql.建议只在dev,sit环境使用
 ```
 > 数据库连接池配置参考[数据库连接池配置](java/config/数据库连接池.md)
+
 > 更多sharding-jdbc的知识请查看其[官网](https://shardingsphere.apache.org),jdbcUrl是Hikari的参数.并不是sharding-jdbc参数
 
 
