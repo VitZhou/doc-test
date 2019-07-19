@@ -6,6 +6,8 @@
 * 前端
     * 一、规范
         * [1、Vue规范](fe/规范/vue.md)
+    * 二、配置
+        * [1、Lint & Style](fe/配置/style.md)
 * 后端
     * 一、Future base介绍
         * [1、 简介(Introduction)](java/future-base/简介.md)
@@ -39,6 +41,7 @@
         * [3、 Undertow配置](java/config/Undertow.md)
         * [4、 Ribbon配置](java/config/Ribbon.md)
         * [5、 Zipkin配置](java/config/zipkin.md)
+        * [5、 数据库连接池配置](java/config/数据库连接池.md)
     * 六、单元测试
         * [1、 配置](java/unit-test/配置.md)
     * 七、鉴权
