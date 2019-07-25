@@ -8,6 +8,9 @@
         * [1、Vue规范](fe/规范/vue.md)
     * 二、配置
         * [1、Lint & Style](fe/配置/style.md)
+    * Q & A 及关键信息说明
+        * [1、调试debug指南](fe/q_a/debug技巧.md)
+        * [2、流水线使用指南](fe/q_a/pipeline.md)
 * 后端
     * 一、Future base介绍
         * [1、 简介(Introduction)](java/future-base/简介.md)

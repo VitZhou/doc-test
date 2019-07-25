@@ -30,7 +30,9 @@ https://www.bootcdn.cn/vConsole/
 打开浏览器控制台。
 关注error类型的log。
 
-常见问题：
+常见问题分析：
+
+对象操作相关：
 ```
 Uncaught TypeError: Cannot Read Property
 TypeError: ‘undefined’ Is Not an Object (evaluating...)
