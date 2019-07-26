@@ -24,7 +24,7 @@
         * [5、 mave脚手架](java/getting_started/脚手架.md)
     * 三、各模块功能
         * core
-            * [1、restTemplate](java/module/core/restTemplate.md)
+            * [1、RestTemplate](java/module/core/restTemplate.md)
         * zookeeper
             * [1、 分布式定时任务](java/module/zookeeper/调度.md)
         * 配置中心
