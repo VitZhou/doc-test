@@ -11,7 +11,7 @@ base的core模块提供了四个restTemplate(列出的是bean名称):
 1. restTemplate
 
 ```java
-@Qualifier(RAW_REST_TEMPLATE)
+@Qualifier(Constants.RAW_REST_TEMPLATE)
 @Autowired
 private RestTemplate restTemplate;
 ```
@@ -19,7 +19,7 @@ private RestTemplate restTemplate;
 2. thirdPartyRestTemplate
 
 ```java
-@Qualifier(THIRD_PARTY_REST_TEMPLATE)
+@Qualifier(Constants.THIRD_PARTY_REST_TEMPLATE)
 @Autowired
 private RestTemplate restTemplate;
 ```
@@ -27,7 +27,7 @@ private RestTemplate restTemplate;
 3. ignoreSSLRestTemplate
 
 ```java
-@Qualifier(IGNORE_SSL_REST_TEMPLATE)
+@Qualifier(Constants.IGNORE_SSL_REST_TEMPLATE)
 @Autowired
 private RestTemplate restTemplate;
 ```
