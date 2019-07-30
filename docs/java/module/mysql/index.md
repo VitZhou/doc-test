@@ -60,13 +60,13 @@ spring:
       master:
         type: com.zaxxer.hikari.HikariDataSource
         driverClassName: com.mysql.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8
+        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8&statementInterceptors=brave.mysql.TracingStatementInterceptor
         username: root
         password: root
       slave:
         type: com.zaxxer.hikari.HikariDataSource
         driverClassName: com.mysql.jdbc.Driver
-        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8
+        jdbcUrl: jdbc:mysql://localhost:3306/future_demo?useSSL=false&characterEncoding=utf8&statementInterceptors=brave.mysql.TracingStatementInterceptor
         username: root
         password: root
     masterslave:
@@ -81,6 +81,7 @@ spring:
 
 > 更多sharding-jdbc的知识请查看其[官网](https://shardingsphere.apache.org),jdbcUrl是Hikari的参数.并不是sharding-jdbc参数
 
+> &statementInterceptors=brave.mysql.TracingStatementInterceptor参数不能少.否则zipkin无法拦截mysql操作
 
 
 只需要将其添加到maven依赖,然后就可按照sharding-jdbc[官网](https://shardingsphere.apache.org)中所述一样使用.在[快速入门](/java/getting_started/mysql.md)中已有例子介绍.具体细节请查看sharding-jdbc官网.
