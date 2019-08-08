@@ -1,5 +1,4 @@
-#debug技巧
-
+# Debug 技巧
 
 ## 手机
 
@@ -20,7 +19,7 @@
 
 之后讲在同一局域网网段下用手机访问页面。
 
-提交代码前，务必记得清楚掉vConsole代码。
+提交代码前，务必记得清掉vConsole调用代码。
 
 最新的 vConsole可以在这里获取：
 https://www.bootcdn.cn/vConsole/
