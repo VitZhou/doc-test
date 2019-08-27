@@ -52,9 +52,7 @@ Mac用户使用 ` Command Palette (⇧⌘P)`快捷键，Windows用户使用 `Com
     "files.associations": {
         "*.vue": "vue"
     },
-    "editor.suggestSelection": {
-        "strings": true
-    },
+    "editor.suggestSelection":"recentlyUsedByPrefix",
     "editor.formatOnType": true,
     "prettier.jsxSingleQuote": true,
     "editor.tabSize": 2,
