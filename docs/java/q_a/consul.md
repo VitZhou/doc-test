@@ -42,3 +42,10 @@ curl -X GET http://ip:port/actuator/health -H "Authorization:Basic {TOKEN}"
 ```shell
 curl -X GET http://ip:port/actuator/health -H "Authorization:Basic YWRtaW46YWRtaW4="
 ```
+
+## 脏数据
+
+如果服务进程被强制kill了会导致consul中存在脏数据. 如果发现有这样的数据需要手工清理.清理方式如下:
+```shell
+curl -X PUT  http://localhost:8500/v1/agent/service/deregister/{serviceId}
+```
