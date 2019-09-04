@@ -34,6 +34,8 @@
             * [2、 PageHelper](java/module/mysql/pageHelper.md)
         * mongo
             * [1、MongoDb](java/module/mongo/index.md)
+        * event
+            * [1、EventBus](java/module/event/EventBus.md)
     * 四、规范
         * [1、 java规范](java/规范/java规范.md)
         * [2、 部署规范](java/规范/部署.md)
@@ -58,7 +60,6 @@
     * 八、 通用工具类
         * [1、RestUriBuilder](java/utils/RestUriBuilder.md)
         * [2、FutureIdGenerator](java/utils/FutureIdGenerator.md)
-        * [3、EventBus](java/utils/EventBus.md)
     * 九、Q & A 及关键信息说明
         * [1、 java相关问题](java/q_a/java.md)
         * [2、 feign相关问题](java/q_a/feign.md)
