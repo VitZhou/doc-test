@@ -57,7 +57,8 @@
              * [2.2、统一userInfo说明](java/auth/统一userInfo.md)
     * 八、 通用工具类
         * [1、RestUriBuilder](java/utils/RestUriBuilder.md)
-        * [1、FutureIdGenerator](java/utils/FutureIdGenerator.md)
+        * [2、FutureIdGenerator](java/utils/FutureIdGenerator.md)
+        * [3、EventBus](java/utils/EventBus.md)
     * 九、Q & A 及关键信息说明
         * [1、 java相关问题](java/q_a/java.md)
         * [2、 feign相关问题](java/q_a/feign.md)
