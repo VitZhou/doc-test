@@ -68,3 +68,6 @@
         * [4、 hystrix相关问题](java/q_a/hystrix.md)
         * [5、 consul相关问题](java/q_a/consul.md)
         * [6、 Actuator相关问题](java/q_a/actuator.md)
+* 运维
+    * 环境设备管理
+        * [dev、sit环境新机器设立规范](DevOps/规范.md)
