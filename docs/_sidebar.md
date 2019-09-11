@@ -22,7 +22,7 @@
         * [2、 maven设置](java/getting_started/maven.md)
         * [3、 聚合服务](java/getting_started/聚合.md)
         * [4、 中台服务](java/getting_started/中台.md)
-        * [5、 mave脚手架](java/getting_started/脚手架.md)
+        * [5、 maven脚手架](java/getting_started/脚手架.md)
     * 三、各模块功能
         * core
             * [1、RestTemplate](java/module/core/restTemplate.md)
@@ -68,6 +68,8 @@
         * [4、 hystrix相关问题](java/q_a/hystrix.md)
         * [5、 consul相关问题](java/q_a/consul.md)
         * [6、 Actuator相关问题](java/q_a/actuator.md)
+    * 十、SQL
+        * [1、规范](sql/specification.md)
 * 运维
     * 环境设备管理
         * [dev、sit环境新机器设立规范](DevOps/规范.md)
