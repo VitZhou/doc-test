@@ -72,5 +72,5 @@
     * 环境设备管理
         * [dev、sit环境新机器设立规范](DevOps/规范.md)
 * 华为云
-    * [版本发布说明](huawei-cloud/releaseVersion.md)
+    * [版本发布规范](huawei-cloud/releaseVersion.md)
     * [华为云项目管理指引](huawei-cloud/projectdoc.md)
