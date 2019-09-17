@@ -1,4 +1,4 @@
-#服务器环境
+# 服务器环境
 
 ## 系统依赖
 OS | Command
@@ -14,7 +14,7 @@ Windows | [Instructions on our wiki](https://github.com/Automattic/node-canvas/w
 如果缺少字体会导致部分echart图表中文乱码。
 centos:
 
-`sudo yum install Fonts`
+`yum -y groupinstall Fonts`
 
 ## 安装nodejs
 
