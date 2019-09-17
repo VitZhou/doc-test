@@ -9,6 +9,8 @@
         * [2、部署规范](fe/规范/部署.md)
     * 二、配置
         * [1、Lint & Style](fe/配置/style.md)
+    * 三、 Node
+        * [1、echart服务器文档](fe/node/echart服务.md)
     * Q & A 及关键信息说明
         * [1、调试debug指南](fe/q_a/debug技巧.md)
         * [2、流水线使用指南](fe/q_a/pipeline.md)
