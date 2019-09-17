@@ -56,6 +56,7 @@ centos:
 ## 安装pm2
 
 全局安装
+`npm install -g cnpm --registry=https://registry.npm.taobao.org`
 `cnpm install pm2 -g`
 
 # 部署
