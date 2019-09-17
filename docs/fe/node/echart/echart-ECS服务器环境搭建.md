@@ -1,6 +1,7 @@
-# 服务器环境
+如果服务器和镜像备份均被删除，切无任何备份，
+需要重新安装各种依赖。
 
-## 系统依赖
+### 系统底层依赖
 OS | Command
 ----- | -----
 OS X | `brew install pkg-config cairo pango libpng jpeg giflib`
@@ -9,14 +10,15 @@ Fedora | `sudo yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel p
 Solaris | `pkgin install cairo pango pkg-config xproto renderproto kbproto xextproto`
 Windows | [Instructions on our wiki](https://github.com/Automattic/node-canvas/wiki/Installation---Windows)
 
-## 中文字体
+### 中文字体
 
+部分Linux没有中文字体。
 如果缺少字体会导致部分echart图表中文乱码。
 centos:
 
 `yum -y groupinstall Fonts`
 
-## 安装nodejs
+### 安装nodejs
 
 使用NVM版本管理器安装多版本。
 登录弹性云服务器。
@@ -53,42 +55,13 @@ centos:
 10. 测试node是否运作正常
     执行 `node -v`
 
-## 安装pm2和cnpm
+### 安装pm2和cnpm
 
 全局安装
 `npm install cnpm pm2  -g  --registry=https://registry.npm.taobao.org`
-
-# 部署
-
-## 流水线CI/CD
-
-//todo VPC组网问题
 
 ## 安装node服务依赖
 建议使用cnpm，否则可能有一些依赖因为国内网络环境问题无法安装上。
 
 在echart服务根目录执行：
 `cnpm install`
-
-# 启动
-
-## 配置机器重启自启动命令
-
-```
-$ pm2 startup
-$ pm2 save
-```
-## 启动服务
-
-在echart服务根目录执行：
-
-```
-$ pm2 star app.js -i max --watch
-```
-
-## 停止服务
-必须使用 delete命令，否则可能端口不释放。
-```
-$ pm2 stop app_name
-$ pm2 delete app_name
-```
