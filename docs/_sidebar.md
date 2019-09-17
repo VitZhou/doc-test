@@ -12,8 +12,8 @@
     * 三、 Node
         * Echart 服务
           * [1、echart服务开发](fe/node/echart/echart服务开发.md)
-          * [2、echart服务部署运维](fe/node/echart服务部署运维.md)
-          * [3、echart-ECS服务器环境搭建](fe/node/echart-ECS服务器环境搭建.md)
+          * [2、echart服务部署运维](fe/node/echart/echart服务部署运维.md)
+          * [3、echart-ECS服务器环境搭建](fe/node/echart/echart-ECS服务器环境搭建.md)
     * Q & A 及关键信息说明
         * [1、调试debug指南](fe/q_a/debug技巧.md)
         * [2、流水线使用指南](fe/q_a/pipeline.md)
