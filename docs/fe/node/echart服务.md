@@ -11,6 +11,7 @@ Windows | [Instructions on our wiki](https://github.com/Automattic/node-canvas/w
 
 ## 中文字体
 
+如果缺少字体会导致部分echart图表中文乱码。
 centos:
 
 `sudo yum install Fonts`
