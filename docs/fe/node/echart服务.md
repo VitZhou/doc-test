@@ -53,11 +53,10 @@ centos:
 10. 测试node是否运作正常
     执行 `node -v`
 
-## 安装pm2
+## 安装pm2和cnpm
 
 全局安装
-`npm install -g cnpm --registry=https://registry.npm.taobao.org`
-`cnpm install pm2 -g`
+`npm install cnpm pm2  -g  --registry=https://registry.npm.taobao.org`
 
 # 部署
 
