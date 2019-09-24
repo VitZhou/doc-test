@@ -19,7 +19,7 @@ Windows | [Instructions on our wiki](https://github.com/Automattic/node-canvas/w
 
 # 开发 
 
-```
+```xml
 nodechart
  |-demo/ demo代码，可以把修改后的代码复制进去修改运行看效果
  |-app.js //node 服务入口，包含路由
